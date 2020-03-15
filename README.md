@@ -1,4 +1,5 @@
-# MetaprimeTask
+# MetaprimeTask  
+![alt text](image.png)
 
 Приложение для взаимодействия с базой данных "Организации-сотрудники"   
 Имеется три таблицы в БД: Organizations, workers, persons    
@@ -7,4 +8,3 @@
 2) поиск записи по id   
 3) удаление записи по id
 
-![alt text](image.png)
