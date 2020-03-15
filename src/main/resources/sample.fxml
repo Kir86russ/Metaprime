@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.grafics.ControllerFX">
+   <children>
+      <ComboBox fx:id="comboBoxTables" layoutX="175.0" layoutY="30.0" prefWidth="150.0" />
+      <Text layoutX="155.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose the table below">
+         <font>
+            <Font size="19.0" />
+         </font></Text>
+      <Text layoutX="64.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="enter id to search">
+         <font>
+            <Font size="19.0" />
+         </font></Text>
+      <TextField fx:id="searchTextFieldId" alignment="CENTER" layoutX="220.0" layoutY="276.0" prefHeight="39.0" prefWidth="37.0" promptText="id" />
+      <TableView fx:id="resultFoundTableView" layoutX="60.0" layoutY="195.0" prefHeight="75.0" prefWidth="381.0" />
+      <Text layoutX="64.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="enter id to delete">
+         <font>
+            <Font size="19.0" />
+         </font></Text>
+      <TextField fx:id="deleteTextFieldId" alignment="CENTER" layoutX="220.0" layoutY="320.0" prefHeight="39.0" prefWidth="37.0" promptText="id" />
+      <Text fx:id="textOkeyDelete" fill="#16cd28" layoutX="155.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Record deleted" visible="false" wrappingWidth="184.7353515625">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text fx:id="textErrorDelete" fill="#cc2e16" layoutX="179.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delete error" visible="false" wrappingWidth="144.68017578125">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <TableView fx:id="sampleForAddTableView" layoutX="17.0" layoutY="70.0" prefHeight="70.0" prefWidth="467.0" />
+      <Button fx:id="addButton" layoutX="370.0" layoutY="142.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="82.0" text="add" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Text fx:id="textOkeyAdd" fill="#16cd18" layoutX="168.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Record added" visible="false">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text fx:id="textErrorAdd" fill="#cc2216" layoutX="193.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add error" visible="false">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text layoutX="133.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="press the button to add:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Line endX="250.0" layoutX="252.0" layoutY="184.0" startX="-240.0" />
+      <Text fx:id="textErrorFormat" fill="#cc2216" layoutX="176.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Incorrect id " visible="false">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text layoutX="274.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="and press:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Text layoutX="274.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="and press:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Button fx:id="searchButton" layoutX="367.0" layoutY="276.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="82.0" text="search" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteButton" layoutX="367.0" layoutY="320.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="82.0" text="delete" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
