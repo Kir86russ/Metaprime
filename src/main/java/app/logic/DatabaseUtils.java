@@ -7,6 +7,7 @@ import app.entities.dbEntitiesTextFields.OrganizationTextFieldsEntity;
 import app.entities.dbEntitiesTextFields.PersonTextFieldsEntity;
 import app.entities.dbEntitiesTextFields.WorkerTextFieldsEntity;
 
+
 import java.sql.*;
 
 public class DatabaseUtils {
@@ -20,13 +21,10 @@ public class DatabaseUtils {
 
         Connection connection = connector.connect();
         String SQL = "delete from " + table + " where " + "'" + id + "'" + " = " + id;
-        PreparedStatement p_state;
 
-        try {
-            p_state = connection.prepareStatement(SQL);
+        try (PreparedStatement p_state = connection.prepareStatement(SQL)) {
             p_state.executeUpdate();
         } catch (SQLException ex) {
-
             ex.printStackTrace();
         } finally {
             connector.disconnect(connection);
@@ -35,11 +33,15 @@ public class DatabaseUtils {
     }
 
 
+    /* Здесь NPE вылететь не должно:  entity - гарантированно не null,
+       а если значения textField.getText() не задано пользователем,
+       тогда это просто "" (пустая строчка)
+     */
     public boolean addEntity(String table, Object entity) {
 
         Connection connection = connector.connect();
         String SQL;
-        PreparedStatement p_state;
+        PreparedStatement p_state = null;
         int index = 0;
 
         try {
@@ -103,7 +105,16 @@ public class DatabaseUtils {
         } catch (IllegalArgumentException | SQLException e) {
             return false;
         } finally {
+
             connector.disconnect(connection);
+
+            try {
+                if (p_state != null && !p_state.isClosed()) {
+                    p_state.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return true;
     }
@@ -118,8 +129,7 @@ public class DatabaseUtils {
 
         Connection connection = connector.connect();
         String SQL = "SELECT * from " + table + " where id = " + id;
-        try {
-            ResultSet rs = connection.createStatement().executeQuery(SQL);
+        try (ResultSet rs = connection.createStatement().executeQuery(SQL)) {
             rs.next();
             switch (table) {
                 case "persons":
@@ -161,9 +171,9 @@ public class DatabaseUtils {
         Connection connection = connector.connect();
         String SQL = "select id from " + table + " where id  " + " = " + value;
 
-        try {
-            PreparedStatement p_state = connection.prepareStatement(SQL);
-            ResultSet res = p_state.executeQuery();
+        try (PreparedStatement p_state = connection.prepareStatement(SQL);
+             ResultSet res = p_state.executeQuery()
+        ) {
             return res.next();
         } catch (SQLException e) {
             return false;

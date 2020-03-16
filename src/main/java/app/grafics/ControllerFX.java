@@ -72,9 +72,11 @@ public class ControllerFX {
 
                 /* пишу смело get(0) потому что, гарантированно 1 элемент лежит в observableList,
                    не упадём с NPE никак */
-                boolean isAdded = databaseUtils.addEntity(tableName, observableListForInserting.get(0));
-                if (isAdded) textOkeyAdd.setVisible(true);
-                else textErrorAdd.setVisible(true);
+                if (observableListForInserting.get(0) != null) {
+                    boolean isAdded = databaseUtils.addEntity(tableName, observableListForInserting.get(0));
+                    if (isAdded) textOkeyAdd.setVisible(true);
+                    else textErrorAdd.setVisible(true);
+                }
             }
         });
 

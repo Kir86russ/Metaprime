@@ -40,9 +40,8 @@ public class Connector {
 
     private void getDatabaseConfigs() {
         Properties property = new Properties();
-        FileInputStream fileInput;
-        try {
-            fileInput = new FileInputStream("src/main/resources/databaseConfig.properties");
+        try (FileInputStream fileInput = new FileInputStream("src/main/resources/databaseConfig.properties");
+        ) {
             property.load(fileInput);
             url = property.getProperty("db.url");
             username = property.getProperty("db.username");
